@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.dnb.devconnector.dto.Education;
 @Repository
 public interface EducationRepository extends CrudRepository<Education, String> {
-
+	boolean existsById(String educationId);
 }

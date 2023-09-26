@@ -8,5 +8,7 @@ import com.dnb.devconnector.dto.User;
 @Repository
 public interface ProfileRepository extends CrudRepository<Profile, String> {
 
+	boolean existsById(String profileId);
+
 	
 }

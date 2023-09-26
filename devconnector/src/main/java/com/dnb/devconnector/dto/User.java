@@ -10,12 +10,14 @@ import com.dnb.devconnector.exceptions.InvalidPasswordException;
 import com.dnb.devconnector.exceptions.InvalidUserNameException;
 import com.dnb.devconnector.utils.CustomUserIdGenerator;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -30,7 +32,6 @@ import lombok.ToString;
 @ToString
 @Entity
 
-
 public class User {
 	
 	@Id
@@ -40,7 +41,7 @@ public class User {
 	@GenericGenerator(name = "user_seq",strategy = "com.dnb.devconnector.utils.CustomUserIdGenerator",
 			parameters = {
 					@Parameter(name = CustomUserIdGenerator.INCREMENT_PARAM, value="50"),
-					@Parameter(name= CustomUserIdGenerator.VALUE_PREFIX_PARAMETER, value="A_"),
+					@Parameter(name= CustomUserIdGenerator.VALUE_PREFIX_PARAMETER, value="U_"),
 					@Parameter(name=CustomUserIdGenerator.NUMBER_FORMAT_PARAMETER, value="%05d")
 					
 					}
@@ -53,6 +54,11 @@ public class User {
   private String email;
 	//@NotBlank(message =" date should not be null")
   private String password;
+  
+  
+
+  @OneToOne(cascade = CascadeType.ALL,mappedBy="user")
+  private Profile profile;
  
 }
   

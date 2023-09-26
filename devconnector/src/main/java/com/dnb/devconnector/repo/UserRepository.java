@@ -9,5 +9,7 @@ import com.dnb.devconnector.dto.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, String>{
+
+	boolean existsById(String userId);
 	
 }

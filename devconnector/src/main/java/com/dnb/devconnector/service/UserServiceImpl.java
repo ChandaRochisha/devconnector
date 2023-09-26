@@ -16,30 +16,45 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	
+	
+	
 	@Override
 	public User createUser(User user) {
 		// TODO Auto-generated method stub
 		return userRepository.save(user);
 	}
 
+	
+	
+	
+	
 	@Override
-	public Optional<User> getUserByEmail(String email) {
+	public Optional<User> getUserById(String userId) {
 		// TODO Auto-generated method stub
-		return userRepository.findById(email);
+		return userRepository.findById(userId);
 	}
+	
+	
+	
 
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return (List<User>) userRepository.findAll();
 	}
+	
+	
+	
+	
 
 	@Override
-	public boolean deleteUser(String email) throws UserNotFoundException {
+	public boolean deleteUser(String userId) throws UserNotFoundException {
 		// TODO Auto-generated method stub
-		if(userRepository.existsById(email)==true)
+		if(userRepository.existsById(userId)==true)
 		{
-			userRepository.deleteById(email);
+			userRepository.deleteById(userId);
 			return true;
 			
 		}
@@ -48,5 +63,24 @@ public class UserServiceImpl implements UserService {
 			
 		}
 	}
+
+	
+	
+	
+	
+	@Override
+	public boolean checkExistenceBy(String userId) {
+		// TODO Auto-generated method stub
+		if(userRepository.existsById(userId))
+		{
+			return true;
+			
+		}
+		else {
+				
+		return false;
+		}
+	}
+
 
 }

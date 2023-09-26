@@ -13,10 +13,10 @@ public interface UserService {
 	public   User createUser(User user) ;
 		// TODO Auto-generated method stub
 	
-    public Optional<User> getUserByEmail(String email);
+    public Optional<User> getUserById(String userId);
     public List<User> getAllUsers();
 
 	public boolean deleteUser(String email) throws UserNotFoundException;
-
+	public boolean checkExistenceBy(String userId);
 
 }

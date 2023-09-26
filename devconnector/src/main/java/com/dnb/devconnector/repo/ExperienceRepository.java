@@ -8,4 +8,6 @@ import com.dnb.devconnector.dto.Experience;
 @Repository
 public interface ExperienceRepository extends CrudRepository<Experience, String>{
 
+	boolean existsById(String experienceId);
+
 }
